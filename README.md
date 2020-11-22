@@ -18,5 +18,6 @@ the roads will the be created and also lights both for the left and right side
 after every car movement data is created that can be used to train AI models feel free to modify and make models to 
 control traffic lights
   
-    
+  
+to start the program run `python main.py`
     
