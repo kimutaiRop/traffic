@@ -7,17 +7,17 @@ from trafic_controler import *
 roads = [{
     "id": 1,  # id of the road
     "name": "moi av",  # ane  of the road
-    "prob": [0.3, 0.3, 0.2, 0.2],  # probabilities of the (entering) key happening
+    "prob": [0.2, 0.3, 0.3, 0.2],  # probabilities of the (entering) key happening
     "entering": [3, 4, 0, -1],  # eg. (entering road id 3 or 4, 0-exiting the city traffic, 1- being packed)
     # directly from this street
-    'side': [1, 0]  # from which side does the cars join entry roads (1-> right, 0-> left)
+    'side': [0, 1]  # from which side does the cars join entry roads (1-> right, 0-> left)
 },
     {
         "id": 2,
         "name": "tom mb",
         "prob": [0.2, 0.3, 0.25, 0.25],
         "entering": [3, 1, 0, -1],
-        'side': [0, 1]
+        'side': [1, 0]
     },
     {
         "id": 3,
@@ -29,7 +29,7 @@ roads = [{
     {
         "id": 4,
         "name": "uni way",
-        "prob": [0.3, 0.2, 0.2, 0.3],
+        "prob": [0.2, 0.2, 0.2, 0.4],
         "entering": [2, 1, 0, -1],
         'side': [1, 0]
     }

@@ -29,13 +29,6 @@ N_VEHICLES = 8000
 NUMBER_OF_THREADS = 8
 
 
-def distance(v1, v2):
-    if v1 < v2:
-        return (v2 - v1) - 1
-    else:
-        return (VEL_MAX - v2) + v1 - 1
-
-
 def get_rate():
     el_time = datetime.now() - PROGRAM_START
     if el_time < timedelta(seconds=PROG_TIME / 5):
@@ -52,9 +45,12 @@ def get_rate():
 
 
 def create_roads():
+    print("[STARTING....] creating roads")
     for i in range(0, 4):
         rd = Road(i)
         ROADS.append(rd)
+        print("[CREATING] ==> creating road {}".format(rd))
+
         for pos in ['left', 'right']:
             lt = Lights()
             lt.start_traffic()
@@ -111,7 +107,6 @@ def print_highway():
                 traffic.append("{} | ".format(r.get_num(side)))
                 # traffic.append("\033[1;{}m {} | ".format(color, r.get_num(side)))
         print(format_row.format("", *traffic))
-        clear_output(wait=True)
         time.sleep(0.2)
 
 
@@ -155,17 +150,19 @@ def create_jobs():
     create_jobs()
 
 
-print("TRAFFIC UPDATE")
-create_roads()
-create_workers()
-try:
-    t0 = threading.Thread(target=simulate_cars)
-    t1 = threading.Thread(target=create_jobs)
-    t2 = threading.Thread(target=plot_graph)
-    t3 = threading.Thread(target=print_highway)
-    t0.start()
-    t1.start()
-    t2.start()
-    t3.start()
-except:
-    print("exiting...")
+if __name__ == "__main__":
+    print("TRAFFIC UPDATE")
+    create_roads()
+    create_workers()
+    try:
+        t0 = threading.Thread(target=simulate_cars)
+        t1 = threading.Thread(target=create_jobs)
+        t2 = threading.Thread(target=plot_graph)
+        t3 = threading.Thread(target=print_highway)
+        t0.start()
+        t1.start()
+
+        t2.start()
+        t3.start()
+    except:
+        print("exiting...")
