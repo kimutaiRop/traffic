@@ -1,4 +1,4 @@
-"# traffic" 
+# traffic
 
 this program simulate frafic for a givem city streets, you just need to specify the
 streets in the `road.py` file dictionary and the relevant specification for the road as given
